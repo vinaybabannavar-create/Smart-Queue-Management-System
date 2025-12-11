@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Now Serving — TV Display</title>
+  <style>
+    body{ background:#000; color:#fff; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; }
+    .wrap{ text-align:center; }
+    .token{ font-size:160px; font-weight:800; letter-spacing:6px; }
+    .counter{ font-size:48px; margin-top:10px; }
+    .patient{ font-size:32px; margin-top:6px; opacity:0.9; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="token" id="token">—</div>
+  <div class="counter" id="counter">Counter: —</div>
+  <div class="patient" id="patient"></div>
+</div>
+
+<script>
+async function loadNowServing(){
+    try {
+        const res = await fetch('/api/now-serving');
+        const j = await res.json();
+        const token = j.tokenCode || '---';
+        const counter = j.counter || '—';
+        const patient = j.patientName || '';
+
+        document.getElementById('token').innerText = token || '—';
+        document.getElementById('counter').innerText = 'Counter: ' + (counter || '—');
+        document.getElementById('patient').innerText = patient ? `Patient: ${patient}` : '';
+
+    } catch(e) { console.log('tv load error', e); }
+}
+
+setInterval(loadNowServing, 3000);
+loadNowServing();
+</script>
+</body>
+</html>

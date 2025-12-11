@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Smart Queue System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; background-color: #f4f4f9; }
+        h1 { color: #333; }
+        .menu { margin-top: 30px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .card {
+            background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 200px; text-decoration: none; color: inherit; transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .card h2 { color: #007bff; margin-bottom: 10px; }
+        .card p { color: #666; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Smart Queue System</h1>
+    <p>Select a portal to continue:</p>
+    
+    <div class="menu">
+        <a href="/user" class="card"> <!-- Assuming there's a user controller, actually need to check if /user exists -->
+            <h2>User Portal</h2>
+            <p>Join the queue and get a ticket.</p>
+        </a>
+        
+        <a href="/staff-login" class="card">
+            <h2>Staff Portal</h2>
+            <p>Call and manage tickets.</p>
+        </a>
+
+        <a href="/dashboard" class="card">
+            <h2>Dashboard</h2>
+            <p>View queue statistics.</p>
+        </a>
+
+        <a href="/tv" class="card">
+            <h2>TV Display</h2>
+            <p>Public queue display screen.</p>
+        </a>
+    </div>
+</body>
+</html>
